@@ -1,36 +1,26 @@
-let arr = [];
-const returnFirstTwoDrivers = function (arr) {
-  return arr.slice(0, 2);
-};
+function receivesAFunction(spy) {
+  return spy();
+}
 
-console.log(returnFirstTwoDrivers(["AZZAM", "FAHD", "QAID", "ALSULMI"]));
+console.log(
+  receivesAFunction(function () {
+    return "cool";
+  })
+);
 
-let arrOne = [];
-const returnLastTwoDrivers = function (arrOne) {
-  return arrOne.slice(arrOne.length - 2);
-};
+function returnsANamedFunction() {
+  let fn = function cool() {
+    console.log("Hello");
+  };
 
-console.log(returnLastTwoDrivers(["AZZAM", "FAHD", "QAID", "ALSULMI"]));
+  return fn;
+}
 
-let selectingDrivers = [returnFirstTwoDrivers, returnLastTwoDrivers];
+console.log(returnsANamedFunction());
 
-function createFareMultiplier(num) {
-  return function (num2) {
-    return num * num2;
+function returnsAnAnonymousFunction() {
+  return function () {
+    console.log("Kool");
   };
 }
-
-const fareDoubler = createFareMultiplier(2);
-fareDoubler(10);
-
-const fareTripler = createFareMultiplier(3);
-fareTripler(12);
-let drivers = [];
-function selectDifferentDrivers(drivers, fun) {
-  return fun(drivers);
-}
-
-selectDifferentDrivers(
-  ["AZZAM", "FAHD", "QAID", "ALSULMI"],
-  returnFirstTwoDrivers()
-);
+console.log(returnsAnAnonymousFunction());
